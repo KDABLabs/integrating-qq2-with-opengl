@@ -32,9 +32,13 @@ class FrameBufferObjectRenderer : public QQuickFramebufferObject::Renderer
 public:
     FrameBufferObjectRenderer()
     {
+#if QT_VERSION < QT_VERSION_CHECK(5, 6, 0)
         // Unfortunately QQuickFramebufferObject mirrors the Y coordinate in 5.5,
-        // 5.6 has *finally* APIs for this
+        // 5.6 has APIs for this
         m_render.initialize(MeshRenderer::MirrorYCoordinate);
+#else
+        m_render.initialize();
+#endif
     }
 
     void synchronize(QQuickFramebufferObject *item) Q_DECL_OVERRIDE
@@ -72,6 +76,9 @@ QuickFrameBufferObject::QuickFrameBufferObject(QQuickItem *parent)
     , m_elevation(15.0)
     , m_distance(5.0)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    setMirrorVertically(true);
+#endif
 }
 
 QQuickFramebufferObject::Renderer *QuickFrameBufferObject::createRenderer() const
