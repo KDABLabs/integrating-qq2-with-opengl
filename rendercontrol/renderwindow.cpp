@@ -162,7 +162,7 @@ void RenderWindow::draw()
     if (!isExposed())
         return;
     m_context->makeCurrent(this);
-    m_context->functions()->glViewport(0, 0, width(), height());
+    m_context->functions()->glViewport(0, 0, width() * devicePixelRatio(), height() * devicePixelRatio());
 
     m_renderer->render();
     m_quickWindow->resetOpenGLState();
