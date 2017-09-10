@@ -24,7 +24,7 @@
 #include <QQmlEngine>
 #include <QSurfaceFormat>
 
-#include "quickframebufferobject.h"
+#include "myframebufferobject.h"
 
 int main(int argc, char **argv)
 {
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     format.setSamples(4);
     QSurfaceFormat::setDefaultFormat(format);
 
-    qmlRegisterType<QuickFrameBufferObject>("MyRenderLibrary", 42, 0, "MeshRenderer");
+    qmlRegisterType<MyFrameBufferObject>("MyRenderLibrary", 42, 0, "MeshRenderer");
 
     QQuickView view;
     view.setResizeMode(QQuickView::SizeRootObjectToView);

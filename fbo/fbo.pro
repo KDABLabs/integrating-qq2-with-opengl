@@ -7,10 +7,10 @@ QT += quick
 
 SOURCES += \
     main.cpp \
-    quickframebufferobject.cpp
+    myframebufferobject.cpp
 
 HEADERS += \
-    quickframebufferobject.h
+    myframebufferobject.h
 
 RESOURCES += \
     fbo.qrc

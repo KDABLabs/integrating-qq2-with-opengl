@@ -19,12 +19,12 @@
 **
 ****************************************************************************/
 
-#ifndef QUICKFRAMEBUFFEROBJECT_H
-#define QUICKFRAMEBUFFEROBJECT_H
+#ifndef MYFRAMEBUFFEROBJECT_H
+#define MYFRAMEBUFFEROBJECT_H
 
 #include <QQuickFramebufferObject>
 
-class QuickFrameBufferObject : public QQuickFramebufferObject
+class MyFrameBufferObject : public QQuickFramebufferObject
 {
     Q_OBJECT
 
@@ -33,7 +33,7 @@ class QuickFrameBufferObject : public QQuickFramebufferObject
     Q_PROPERTY(float distance READ distance WRITE setDistance NOTIFY distanceChanged)
 
 public:
-    explicit QuickFrameBufferObject(QQuickItem *parent = 0);
+    explicit MyFrameBufferObject(QQuickItem *parent = 0);
     Renderer *createRenderer() const Q_DECL_OVERRIDE;
 
     float azimuth() const;
@@ -56,4 +56,4 @@ private:
     float m_distance;
 };
 
-#endif // QUICKFRAMEBUFFEROBJECT_H
+#endif // MYFRAMEBUFFEROBJECT_H

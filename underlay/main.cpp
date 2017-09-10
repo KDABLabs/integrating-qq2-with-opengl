@@ -19,7 +19,7 @@
 **
 ****************************************************************************/
 
-#include "quickview.h"
+#include "myquickview.h"
 
 #include <QGuiApplication>
 
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 
     Q_INIT_RESOURCE(assets);
 
-    QuickView view;
+    MyQuickView view;
     view.show();
     view.resize(600, 600);
 

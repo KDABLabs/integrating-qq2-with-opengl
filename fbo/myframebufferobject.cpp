@@ -19,7 +19,7 @@
 **
 ****************************************************************************/
 
-#include "quickframebufferobject.h"
+#include "myframebufferobject.h"
 
 #include <meshrenderer.h>
 
@@ -27,25 +27,20 @@
 #include <QOpenGLFramebufferObject>
 #include <QOpenGLFramebufferObjectFormat>
 
-class FrameBufferObjectRenderer : public QQuickFramebufferObject::Renderer
+class MyFrameBufferObjectRenderer : public QQuickFramebufferObject::Renderer
 {
 public:
-    FrameBufferObjectRenderer()
+    MyFrameBufferObjectRenderer()
     {
-#if QT_VERSION < QT_VERSION_CHECK(5, 6, 0)
-        // Unfortunately QQuickFramebufferObject mirrors the Y coordinate in 5.5,
-        // 5.6 has APIs for this
-        m_render.initialize(MeshRenderer::MirrorYCoordinate);
-#else
+
         m_render.initialize();
-#endif
     }
 
     void synchronize(QQuickFramebufferObject *item) Q_DECL_OVERRIDE
     {
         m_window = item->window();
 
-        QuickFrameBufferObject *i = static_cast<QuickFrameBufferObject *>(item);
+        MyFrameBufferObject *i = static_cast<MyFrameBufferObject *>(item);
         m_render.setAzimuth(i->azimuth());
         m_render.setElevation(i->elevation());
         m_render.setDistance(i->distance());
@@ -70,41 +65,40 @@ private:
     QQuickWindow *m_window;
 };
 
-QuickFrameBufferObject::QuickFrameBufferObject(QQuickItem *parent)
+
+
+// MyFrameBufferObject implementation
+
+MyFrameBufferObject::MyFrameBufferObject(QQuickItem *parent)
     : QQuickFramebufferObject(parent)
     , m_azimuth(0.0)
     , m_elevation(15.0)
     , m_distance(5.0)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
     setMirrorVertically(true);
-#endif
 }
 
-QQuickFramebufferObject::Renderer *QuickFrameBufferObject::createRenderer() const
+QQuickFramebufferObject::Renderer *MyFrameBufferObject::createRenderer() const
 {
-    return new FrameBufferObjectRenderer;
+    return new MyFrameBufferObjectRenderer;
 }
 
-
-
-
-float QuickFrameBufferObject::azimuth() const
+float MyFrameBufferObject::azimuth() const
 {
     return m_azimuth;
 }
 
-float QuickFrameBufferObject::distance() const
+float MyFrameBufferObject::distance() const
 {
     return m_distance;
 }
 
-float QuickFrameBufferObject::elevation() const
+float MyFrameBufferObject::elevation() const
 {
     return m_elevation;
 }
 
-void QuickFrameBufferObject::setAzimuth(float azimuth)
+void MyFrameBufferObject::setAzimuth(float azimuth)
 {
     if (m_azimuth == azimuth)
         return;
@@ -114,7 +108,7 @@ void QuickFrameBufferObject::setAzimuth(float azimuth)
     update();
 }
 
-void QuickFrameBufferObject::setDistance(float distance)
+void MyFrameBufferObject::setDistance(float distance)
 {
     if (m_distance == distance)
         return;
@@ -124,7 +118,7 @@ void QuickFrameBufferObject::setDistance(float distance)
     update();
 }
 
-void QuickFrameBufferObject::setElevation(float elevation)
+void MyFrameBufferObject::setElevation(float elevation)
 {
     if (m_elevation == elevation)
         return;
@@ -133,5 +127,3 @@ void QuickFrameBufferObject::setElevation(float elevation)
     emit elevationChanged(elevation);
     update();
 }
-
-

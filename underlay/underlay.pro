@@ -7,10 +7,10 @@ QT += quick
 
 SOURCES += \
     main.cpp \
-    quickview.cpp
+    myquickview.cpp
 
 HEADERS += \
-    quickview.h
+    myquickview.h
 
 RESOURCES += \
     underlay.qrc

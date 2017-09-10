@@ -19,19 +19,19 @@
 **
 ****************************************************************************/
 
-#ifndef QUICKVIEW_H
-#define QUICKVIEW_H
+#ifndef MYQUICKVIEW_H
+#define MYQUICKVIEW_H
 
 #include <QQuickView>
 
 class MeshRenderer;
 class Camera;
 
-class QuickView : public QQuickView
+class MyQuickView : public QQuickView
 {
     Q_OBJECT
 public:
-    explicit QuickView(QWindow *parent = 0);
+    explicit MyQuickView(QWindow *parent = 0);
 
 private:
     void initializeUnderlay();
@@ -43,4 +43,4 @@ private:
     MeshRenderer *m_renderer;
 };
 
-#endif // QUICKVIEW_H
+#endif // MYQUICKVIEW_H

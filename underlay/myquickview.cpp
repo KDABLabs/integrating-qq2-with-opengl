@@ -19,7 +19,7 @@
 **
 ****************************************************************************/
 
-#include "quickview.h"
+#include "myquickview.h"
 
 #include <camera.h>
 #include <meshrenderer.h>
@@ -27,7 +27,7 @@
 #include <QSurfaceFormat>
 #include <QQmlContext>
 
-QuickView::QuickView(QWindow *parent)
+MyQuickView::MyQuickView(QWindow *parent)
     : QQuickView(parent)
     , m_camera(new Camera(this))
     , m_renderer(new MeshRenderer(this))
@@ -42,19 +42,19 @@ QuickView::QuickView(QWindow *parent)
     setFormat(format);
 
     connect(this, &QQuickWindow::sceneGraphInitialized,
-            this, &QuickView::initializeUnderlay,
+            this, &MyQuickView::initializeUnderlay,
             Qt::DirectConnection);
 
     connect(this, &QQuickWindow::beforeSynchronizing,
-            this, &QuickView::synchronizeUnderlay,
+            this, &MyQuickView::synchronizeUnderlay,
             Qt::DirectConnection);
 
     connect(this, &QQuickWindow::beforeRendering,
-            this, &QuickView::renderUnderlay,
+            this, &MyQuickView::renderUnderlay,
             Qt::DirectConnection);
 
     connect(this, &QQuickWindow::sceneGraphInvalidated,
-            this, &QuickView::invalidateUnderlay,
+            this, &MyQuickView::invalidateUnderlay,
             Qt::DirectConnection);
 
     connect(m_camera, &Camera::azimuthChanged,
@@ -74,26 +74,26 @@ QuickView::QuickView(QWindow *parent)
     setSource(QUrl("qrc:///qml/main.qml"));
 }
 
-void QuickView::initializeUnderlay()
+void MyQuickView::initializeUnderlay()
 {
     m_renderer->initialize();
     resetOpenGLState();
 }
 
-void QuickView::synchronizeUnderlay()
+void MyQuickView::synchronizeUnderlay()
 {
     m_renderer->setAzimuth(m_camera->azimuth());
     m_renderer->setElevation(m_camera->elevation());
     m_renderer->setDistance(m_camera->distance());
 }
 
-void QuickView::renderUnderlay()
+void MyQuickView::renderUnderlay()
 {
     m_renderer->render();
     resetOpenGLState();
 }
 
-void QuickView::invalidateUnderlay()
+void MyQuickView::invalidateUnderlay()
 {
     m_renderer->invalidate();
     resetOpenGLState();
