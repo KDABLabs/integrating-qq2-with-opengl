@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2015 Klarälvdalens Datakonsult AB, a KDAB Group company.
+** Copyright (C) 2017 Klarälvdalens Datakonsult AB, a KDAB Group company.
 ** Author: Giuseppe D'Angelo
 ** Contact: info@kdab.com
 **
@@ -20,7 +20,7 @@
 ****************************************************************************/
 
 import QtQuick 2.0
-import QtQuick.Controls 1.0
+import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
 Rectangle {
@@ -33,7 +33,7 @@ Rectangle {
     color: "#55ffffff"
 
     width: parent ? parent.width - 10 : 400
-    height: 100
+    height: 150
 
     Component.onCompleted: if (camera) actualStuff.createObject(cameraControls)
 
@@ -47,8 +47,8 @@ Rectangle {
             Label { text: "Azimuth" }
             Slider {
                 Layout.fillWidth: true
-                minimumValue: 0
-                maximumValue: 360
+                from: 0
+                to: 360
                 value: 180
                 onValueChanged: cameraControls.camera.azimuth = value
             }
@@ -57,8 +57,8 @@ Rectangle {
             Label { text: "Elevation" }
             Slider {
                 Layout.fillWidth: true
-                minimumValue: 0
-                maximumValue: 90
+                from: 0
+                to: 90
                 value: 10
                 onValueChanged: cameraControls.camera.elevation = value
             }
@@ -68,8 +68,8 @@ Rectangle {
             Slider {
                 id: distanceSlider
                 Layout.fillWidth: true
-                minimumValue: 1
-                maximumValue: 25
+                from: 1
+                to: 25
                 value: 15
                 onValueChanged: cameraControls.camera.distance = value
             }
