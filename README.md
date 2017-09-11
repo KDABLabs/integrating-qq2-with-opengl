@@ -1,14 +1,15 @@
 # Integrating Qt Quick 2 with OpenGL
 
-This is the code for Giuseppe D'Angelo's talk at the Qt World Summit 2015.
+This is the code for Giuseppe D'Angelo's talk at the Qt World Summit 2015,
+QtCon 2016, Qt World Summit 2017.
 
-* Slides: http://www.kdab.com/kdab-at-qt-world-summit/
-* Video: https://www.youtube.com/watch?v=D-7fVGIBz6k
+* Slides: http://www.kdab.com/kdab-at-qt-world-summit/ https://conf.qtcon.org/system/attachments/99/original/integrating-opengl-qq2.pdf%3F1473007100
+* Video: https://www.youtube.com/watch?v=D-7fVGIBz6k https://www.youtube.com/watch?v=V_idc9BBRuI
 * Blog posts: http://www.kdab.com/integrating-opengl-with-qt-quick-2-applications-part-1/
 
 
 ```
-Copyright (C) 2015 Klarälvdalens Datakonsult AB, a KDAB Group company.
+Copyright (C) 2017 Klarälvdalens Datakonsult AB, a KDAB Group company.
 Author: Giuseppe D'Angelo
 Contact: info@kdab.com
 
